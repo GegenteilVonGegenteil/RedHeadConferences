@@ -1,10 +1,9 @@
-<script setup>
-import conferenceData from '../data/conference-data.json'
+<script setup lang="ts">
+  import {useConferenceData} from "~/composables/useConferenceData.ts";
 
-const dataSummary = Array.isArray(conferenceData)
-  ? `${conferenceData.length} Einträge geladen.`
-  : `Geladene Datenbereiche:
-  ${Object.keys(conferenceData).join(', ')}.`
+  const {getAllSessions} = useConferenceData();
+
+  const sessions = getAllSessions();
 </script>
 
 <template>
@@ -30,6 +29,8 @@ const dataSummary = Array.isArray(conferenceData)
       <a href="#programm" class="button">
         Zum Programm
       </a>
+
+      <p>Aktuell gibt es {{sessions.length}} Sessions</p>
     </section>
 
     <section
@@ -54,10 +55,6 @@ const dataSummary = Array.isArray(conferenceData)
         <p>
           Entdecke spannende Themen und stelle dir
           später dein persönliches Programm zusammen.
-        </p>
-        
-        <p>
-         {{ dataSummary }}
         </p>
       </article>
     </section>

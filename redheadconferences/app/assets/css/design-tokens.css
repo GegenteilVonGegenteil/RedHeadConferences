@@ -29,7 +29,7 @@
   --space-12: 3rem;
 
 /* Primitive Typography */
-  --font-family-sans: 'Quicksand', system-ui, sans-serif;
+  --font-family-sans: "Quicksand", system-ui, sans-serif;
 
   --font-size-xs: 0.875rem;   /* 14 px */
   --font-size-s: 1rem;        /* 16 px */
@@ -48,6 +48,9 @@
 
   /* Primitive Border Radius */
   --border-radius-full: 9999px;
+
+  /* Semantic Fonts*/
+  --font-family-body: var(--font-family-sans);
 
   /* Semantic Colors Light Mode */
   --color-background: var(--gray100);

@@ -135,7 +135,7 @@ button:focus-visible {
 
 .eyebrow {
     color: var(--color-heading2);
-    font-weight: var(--fontweight-bold);
+    font-weight: var(--font-weight-bold);
 }
 
 .intro {
