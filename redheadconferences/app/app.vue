@@ -7,12 +7,6 @@ useHead({
   htmlAttrs: {
     lang: 'de',
   },
-  link: [
-    {
-      rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap',
-    },
-  ],
 })
 </script>
 
