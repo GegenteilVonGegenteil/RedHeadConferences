@@ -62,7 +62,7 @@
   --color-action: var(--blue500);
   --color-action-hover: var(--red500);
   --color-on-action: var(--white);
-  --color-focus: var(--white);
+  --color-focus: var(--blue500);
   
 /* Semantic Spacing */
   --spacing-page-inline: var(--space-6);
