@@ -1,0 +1,3 @@
+- Prompt: "I am trying to decide on a folder structure for my Nuxt application. So far, I have explored the option of seperating into composables, components and pages, with the components being seperated into base, feature and layout. What are other options?"
+  Übernommen: Ideen einer flachen Ordner Struktur und einer Feature basierten Struktur
+  Geändert/verstanden: Ich habe selber reflektiert ob die Strukturen in unseren Use Case passen und was Vor-/ und Nachteile sind
