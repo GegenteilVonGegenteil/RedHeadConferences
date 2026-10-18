@@ -49,9 +49,6 @@
   /* Primitive Border Radius */
   --border-radius-full: 9999px;
 
-  /* Semantic Fonts*/
-  --font-family-body: var(--font-family-sans);
-
   /* Semantic Colors Light Mode */
   --color-background: var(--gray100);
   --color-surface: var(--white);
@@ -76,6 +73,8 @@
   --spacing-control-inline: var(--space-4);
 
   /* Semantic Typography */
+  --font-family-body: var(--font-family-sans);
+
   --font-size-body: var(--font-size-m);
   --font-size-heading1: var(--font-size-2xl);
   --font-size-heading2: var(--font-size-xl);
