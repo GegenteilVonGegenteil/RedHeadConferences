@@ -168,3 +168,71 @@ button:focus-visible {
     background-color: var(--color-surface);
     padding: var(--spacing-card-padding);
 }
+
+.sessions-page,
+.speakers-page {
+  display: grid;
+  gap: var(--spacing-content-gap);
+}
+
+.session-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--spacing-content-gap);
+}
+
+.filter-field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.session-list {
+  display: grid;
+  gap: var(--spacing-content-gap);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.session-card {
+  display: grid;
+  gap: var(--spacing-content-gap);
+  padding: var(--spacing-card-padding);
+  background-color: var(--color-surface);
+}
+
+select,
+button {
+  font: inherit;
+}
+
+select {
+  padding:
+    var(--spacing-control-block)
+    var(--spacing-control-inline);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary);
+}
+
+button.button {
+  border: 0;
+  cursor: pointer;
+}
+
+select:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+.speaker-profile {
+    display: grid;
+    gap: var(--spacing-section);
+}
+
+.speaker-information,
+.speaker-sessions {
+    display: grid;
+    gap: var(--spacing-content-gap);
+}

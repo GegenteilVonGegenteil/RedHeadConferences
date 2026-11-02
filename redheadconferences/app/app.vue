@@ -1,9 +1,7 @@
 <script setup>
-import './assets/css/design-tokens.css'
-import './assets/css/main.css'
 
 useHead({
-  titel: 'Redhead Conferences | FrontendNow',
+  title: 'Redhead Conferences | FrontendNow',
   htmlAttrs: {
     lang: 'de',
   },
