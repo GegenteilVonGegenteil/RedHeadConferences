@@ -1,12 +1,11 @@
 # Renderingstrategie für Redhead Conferences
 
 ## Status
-Vorschlag - Freigabe durch beide Teammitglieder notwendig
-Vorschlag - Gendern mit :
+Reviewed
 
 ## Allgemeine Auswahlkriterien
 
-Redhead Conferences zeigt das Programm der Konferenz FrontendNow. Bei der Auswahl der Renderingstrategie berücksichtigen wir, wie häufig sich Inhalte ändern und ob sie für alle Besucher:innen gleich sind. Die Speaker:innenprofile enthalten weitgehend unveränderte Informationen, während sich Zeiten und Räume einzelner Sessions während der Konferenz ändern können. Das persönliche Programm unterscheidet sich hingegen je nach Benutzer:in und wird im Browser gespeichert. Zusätzlich achten wir darauf, dass die gewählte Strategie mit Nuxt umsetzbar ist und zu unserem Projektumfang passt. Unsere gemeinsame Datenbasis bleibt die conference-data.json. Da kein echtes Livebackend erforderlich ist, simulieren wir Änderungen am Zeitplan und dokumentieren deren Umsetzung sowie die damit verbundenen Einschränkungen.
+Redhead Conferences zeigt das Programm der Konferenz FrontendNow. Bei der Auswahl der Renderingstrategie berücksichtigen wir, wie häufig sich Inhalte ändern und ob sie für alle Besucher:innen gleich sind. Die Speaker:innenprofile enthalten weitgehend unveränderte Informationen, während sich Zeiten und Räume einzelner Sessions während der Konferenz ändern können. Das persönliche Programm unterscheidet sich hingegen je nach Benutzer:in und wird im Browser gespeichert. Zusätzlich achten wir darauf, dass die gewählte Strategie mit Nuxt umsetzbar ist und zu unserem Projektumfang passt. Unsere gemeinsame Datenbasis bleibt die conference-data.json. Da kein echtes Live-Backend erforderlich ist, simulieren wir Änderungen am Zeitplan und dokumentieren deren Umsetzung sowie die damit verbundenen Einschränkungen.
 
 ## 1. Speaker:innenprofile
 
@@ -16,33 +15,33 @@ Redhead Conferences zeigt die Profile von 18 Speaker:innen, die jeweils ihren Na
 
 ### Optionen
 
-Wir haben SSG und SSR betrachtet. Bei SSG werden die Profile bereits beim Build erzeugt und anschließend als fertige Seiten ausgeliefert. Änderungen an den Profilen benötigen einen neuen Build. Bei SSR wird die Seite bei einer Anfrage auf dem Server erzeugt, wodurch aktuelle Informationen aus einer veränderlichen Datenquelle eingebunden werden könnten.
+Wir haben SSG und ISR betrachtet. Bei SSG werden die Profile bereits beim Build erzeugt und anschließend als fertige Seiten ausgeliefert. Änderungen an den Profilen benötigen einen neuen Build. Bei ISR wird SSG um periodische Regeneration der Profile erweitert, womit potenzielle Änderungen übernommen werden könnten, ohne die gesamte Applikation neu builden zu müssen.
 
 ### Entscheidung
 
-Wir entscheiden uns für **SSG**, da alle Speaker:inneninformationen vollständig in unserer conference-data.json vorliegen und weitgehend unverändert bleiben. SSR verwerfen wir, weil eine erneute Erzeugung bei jeder Anfrage für diese Inhalte keinen ausreichenden Vorteil bietet.
+Wir entscheiden uns für **SSG**, da alle Speaker:inneninformationen vollständig in unserer conference-data.json vorliegen und weitgehend unverändert bleiben. ISR verwerfen wir, weil wir aktuell nicht annehmen, dass sich die Speaker:inneninformationen regelmäßig genug ändern würden, um diese Alternative sinnvoll zu machen.
 
 ### Konsequenzen
 
-Beim Build müssen alle 18 Profilrouten erzeugt werden. Wenn wir einen Profiltext ändern, müssen wir die Anwendung erneut bauen und veröffentlichen. Die Links zu den gehaltenen Sessions bleiben Bestandteil der Profile. Aktuelle Zeitplaninformationen werden auf den zugehörigen Sessionseiten bereitgestellt.
+Beim Build müssen alle 18 Profilrouten erzeugt werden. Wenn wir einen Profiltext ändern, müssen wir die Anwendung erneut bauen und veröffentlichen. Die Links zu den gehaltenen Sessions bleiben Bestandteil der Profile. Aktuelle Zeitplaninformationen werden auf den zugehörigen Sessionseiten bereitgestellt. Problematisch könnte es werden, wenn die Session-Informationen geändert werden (z.B. Titel, Raum, Zeit) und dies nicht in den Profilen reflektiert wird.
 
 ## 2. Sessiondetailseiten
 
 ### Kontext
 
-Für jede der 20 Sessions gibt es eine eigene Detailseite, die Titel, Abstract, Tag, Startzeit, Endzeit, Raum, Track, Level und Format sowie Links zu den beteiligten Speaker:innen enthält. Während einer Konferenz können sich insbesondere Zeiten und Räume ändern. Besucher:innen sollen deshalb bei einem erneuten Aufruf den aktuellen Stand erhalten. Die Informationen sind öffentlich und für alle Besucher:innen gleich.
+Für jede der 20 Sessions gibt es eine eigene Detailseite, die Titel, Abstract, Tag, Startzeit, Endzeit, Raum, Track, Level und Format sowie Links zu den beteiligten Speaker:innen enthält. Während einer Konferenz können sich insbesondere Zeiten und Räume ändern. Jedoch erwarten wir aktuell keine Veränderungen, die in Echtzeit angezeigt werden müssen (z.B. Last-Minute-Änderungen oder Verschiebungen). Besucher:innen sollen trotzdem halbwegs aktuelle Daten bekommen, um ihren Besuch der Konferenz sinnvoll planen zu können. Die Informationen sind öffentlich und für alle Besucher:innen gleich.
 
 ### Optionen
 
-Wir haben SSG und SSR verglichen. SSG würde die Detailseiten beim Build erzeugen, was gut zu unserem derzeit festen Datensatz passt. Eine kurzfristige Änderung am Zeitplan wäre allerdings erst nach einem neuen Build und einer erneuten Veröffentlichung sichtbar. SSR erzeugt die Seiten bei einer Anfrage auf dem Server und kann dabei aktuelle Daten berücksichtigen.
+Wir haben SSG, ISR und SSR verglichen. SSG würde die Detailseiten beim Build erzeugen, was gut zu unserem derzeit festen Datensatz passt. Eine Änderung am Zeitplan wäre allerdings erst nach einem neuen Build und einer erneuten Veröffentlichung sichtbar. Bei ISR wird SSG um periodische Regeneration der Seite erweitert, womit Änderungen im Zeitplan regelmäßig übernommen werden. SSR könnte auch in Betracht gezogen werden, sollten wir Änderungen in Echtzeit aktualisieren wollen.
 
 ### Entscheidung
 
-Wir wählen **SSR**, da wir mögliche Änderungen am Zeitplan berücksichtigen möchten. SSG verwerfen wir für diesen Anwendungsteil, weil Aktualisierungen sonst an einen neuen Build gebunden wären. Für diesen Projektschritt simulieren wir eine Änderung an Zeit oder Raum, ohne ein echtes Livebackend einzurichten.
+Wir wählen **ISR**, da wir mögliche Änderungen am Zeitplan berücksichtigen möchten. Alle Besucher:innen sehen den gleichen Inhalt und die Routen und Daten sind zur Buildzeit bekannt. SSG verwerfen wir für diesen Anwendungsteil, weil Aktualisierungen sonst an einen neuen Build gebunden wären. SSR würde bei jedem Aufruf neu rendern, obwohl Änderungen selten sind und keine Echtzeitanzeige nötig ist.
 
 ### Konsequenzen
 
-Die Anwendung benötigt eine Serverlaufzeit. Da der bisherige JSON-Import allein keine veränderlichen Daten bereitstellt, ergänzen wir eine zentrale Simulation, die auch von der Übersicht verwendet wird. Wir prüfen, ob die Änderung bei einem erneuten Seitenaufruf sichtbar ist. Bereits geöffnete Seiten aktualisieren sich durch SSR nicht automatisch.
+Die Anwendung benötigt eine Serverlaufzeit (hier rein konzeptuell/simuliert), was das Hosting der Seite aufwendiger macht als eine rein statische Seite. Zudem akzeptieren wir, dass Benutzer:innen veraltete Daten sehen könnten, was je nach Szenario für sie Probleme oder Verwirrung sorgen könnte. Bereits geöffnete Seiten werden nicht aktualisiert. Dies ist aktuell ein Kompromiss, den wir akzeptieren, da es für unsere aktuellen Anforderungen und Funktionalitäten weiterhin mehr Vorteile mit sich bringt als die Alternativen.
 
 ## 3. Sessionübersicht mit Filtern
 
@@ -52,15 +51,15 @@ Die Sessionübersicht zeigt alle 20 Sessions der FrontendNow, die nach Track, Ko
 
 ### Optionen
 
-Wir haben SSG und SSR betrachtet. Bei SSG wird die Übersicht beim Build erzeugt und anschließend im Browser interaktiv gefiltert. Änderungen am Zeitplan erscheinen jedoch erst nach einem neuen Build. Bei SSR wird die Übersicht bei einer Anfrage auf dem Server erzeugt, wodurch sie denselben aktuellen Datenstand wie die Sessiondetailseiten verwenden kann.
+Wir haben SSG, ISR und SSR betrachtet. Bei SSG wird die Übersicht beim Build erzeugt und anschließend im Browser interaktiv gefiltert. Änderungen am Zeitplan erscheinen jedoch erst nach einem neuen Build. Bei ISR wird SSG um periodische Regeneration der Seite erweitert, womit Änderungen im Zeitplan regelmäßig übernommen werden. Bei SSR wird die Übersicht bei einer Anfrage auf dem Server erzeugt, wodurch sie denselben aktuellen Datenstand wie die Sessiondetailseiten verwenden kann.
 
 ### Entscheidung
 
-Wir wählen **SSR** für die anfängliche Darstellung der Übersicht. Die Filterung erfolgt anschließend im Browser. SSG verwerfen wir, weil die Übersicht sonst einen älteren Zeitplan als die Detailseiten anzeigen könnte.
+Wir wählen **ISR** für die anfängliche Darstellung der Übersicht. Die Filterung erfolgt anschließend im Browser. Dies passt auch zu unserer Entscheidung der Renderingmethode für die Sessiondetail-Seiten. SSG verwerfen wir, weil die Übersicht sonst einen älteren Zeitplan als die Detailseiten anzeigen könnte. SSR ist wie bei den Detailseiten für unsere aktuellen Ansprüche weniger zutreffend.
 
 ### Konsequenzen
 
-Die Übersicht und die Detailseiten verwenden dieselbe zentrale Datenschicht sowie dieselbe Simulation von Zeitplanänderungen. Die Filterlogik liegt in einem eigenen Composable. Da alle Sessions bereits geladen sind, benötigen Änderungen an den Filtern keine zusätzliche Serveranfrage. Ein erneuter Seitenaufruf kann einen aktualisierten Zeitplan laden. Für den Betrieb wird eine Serverlaufzeit benötigt.
+Die Übersicht und die Detailseiten verwenden dieselbe zentrale Datenschicht sowie dieselbe Simulation von Zeitplanänderungen. Die Filterlogik liegt in einem eigenen Composable. Da alle Sessions bereits geladen sind, benötigen Änderungen an den Filtern keine zusätzliche Serveranfrage. Für den Betrieb wird eine Serverlaufzeit benötigt. Wie bei den Detailseiten nehmen wir in Kauf, dass Benutzer:innen leicht veraltete Daten sehen werden.
 
 ## 4. Mein Programm
 
