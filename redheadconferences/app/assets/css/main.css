@@ -9,7 +9,7 @@ body {
     margin: 0;
     background-color: var(--color-background);
     color: var(--color-text-primary);
-    font-family: var(--font-family-body);
+    font-family: var(--font-family-body), sans-serif;
     font-size: var(--font-size-body);
     font-weight: var(--font-weight-body);
     line-height: var(--line-height-normal);
@@ -77,29 +77,41 @@ button:focus-visible {
     background-color: var(--color-surface);
     padding: var(--spacing-content-gap)
     var(--spacing-page-inline);
-}
-
-.header-content {
-    max-width: 70rem;
     margin-inline: auto;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: space-between;
-    gap: var(--spacing-content-gap);
+    align-items: center;
 }
 
-.brand {
-    color: var(--color-heading2);
-    font-size: var(--font-size-heading3);
-    font-weight: var(--font-weight-heading3);
-    font-style: normal;
-    text-decoration: none;
+.branding {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-control-block)
 }
 
-.team-name {
+#name {
+    font-weight: var(--font-weight-heading1);
+}
+
+#secondary {
     font-size: var(--font-size-footer);
+}
+
+.site-nav {
+    display: flex;
+    gap: var(--spacing-control-block)
+}
+
+.navlinks {
+    text-decoration: none;
     font-weight: var(--font-weight-body);
+    font-style: normal;
+}
+
+.navlinks.router-link-active {
+    font-weight: var(--font-weight-heading1);
+    border-bottom: 2px solid var(--color-link-hover);
 }
 
 .page-content {
@@ -118,6 +130,24 @@ button:focus-visible {
     font-size: var(--font-size-footer);
     font-weight: var(--font-weight-body);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.seperator {
+    border-top: 0.15rem solid var(--color-text-primary);
+    border-radius: 5px;
+    width: 100%;
+    margin: var(--spacing-content-gap) 0;
+}
+
+.place-and-time {
+    display: flex;
 }
 
 /* Anordnung Startseite */
