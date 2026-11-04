@@ -20,16 +20,14 @@ export default defineNuxtConfig({
       prerender: true,
     },
 
-    // Die Sessionübersicht wird serverseitig gerendert.
+    // Die Sessionübersicht wird alle 5 minuten revalidiert.
     '/sessions': {
-      ssr: true,
-      prerender: false,
+      isr: 300
     },
 
-    // Sessiondetailseiten werden serverseitig gerendert.
+    // Sessiondetailseiten werden alle 5 minuten revalidiert.
     '/sessions/**': {
-      ssr: true,
-      prerender: false,
+      isr: 300
     },
 
     // Das persönliche Programm wird im Browser gerendert.
