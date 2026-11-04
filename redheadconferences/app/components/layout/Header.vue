@@ -10,7 +10,6 @@
     <nav class="site-nav">
       <NuxtLink class="navlinks" to="/">Home</NuxtLink>
       <NuxtLink class="navlinks" to="/sessions">Sessions</NuxtLink>
-      <NuxtLink class="navlinks" to="/speakers">Sprecher</NuxtLink>
       <NuxtLink class="navlinks" to="/myprogram">Mein Programm</NuxtLink>
     </nav>
     <select name="theme" id="themes">
