@@ -1,0 +1,72 @@
+<script setup lang="ts">
+  import Tag from "~/components/feature/sessions/Tag.vue";
+  import SpeakerCard from "~/components/feature/sessions/SpeakerCard.vue";
+
+  definePageMeta({
+    key: route => route.path
+  });
+
+  const route = useRoute();
+
+  const {
+    getSessionById,
+    getSpeakersByIds,
+    getRoomById
+  } = useConferenceData();
+
+  const sessionId = String(route.params.id);
+  const session = getSessionById(sessionId);
+
+  if (!session) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Speaker nicht gefunden'
+    });
+  }
+
+  const speakers = getSpeakersByIds(session.speakerIds);
+  const room = getRoomById(session.roomId);
+
+  useHead({
+    title: `${session.title} | Redhead Conferences`
+  });
+</script>
+
+<template>
+  <NuxtLink to="/sessions" class="back">Zurück zu Sessions</NuxtLink>
+  <section class="tags">
+    <Tag :tag="session.trackId" />
+    <Tag :tag="session.level" />
+    <Tag :tag="session.format" />
+  </section>
+
+  <section class="mainSessionContent">
+    <h1>{{session.title}}</h1>
+    <p>{{session.abstract}}</p>
+  </section>
+
+  <section class="sessionDetails">
+      <div class="sessionDetailsBox">
+        <h2>Wann und Wo?</h2>
+        <div class="locationAndTime">
+          <p>{{session.day}}</p>
+          <p>{{session.startTime}} - {{session.endTime}}</p>
+          <p>{{room.name}}</p>
+
+          <ClientOnly>
+            <button> Zum Programm hinzufügen </button>
+          </ClientOnly>
+        </div>
+      </div>
+
+    <div class="speakersBox">
+      <h2>Mit wem?</h2>
+      <SpeakerCard v-for="speaker in speakers" :key="speaker?.id" :speaker="speaker" />
+    </div>
+  </section>
+
+</template>
+
+<style scoped>
+
+</style>

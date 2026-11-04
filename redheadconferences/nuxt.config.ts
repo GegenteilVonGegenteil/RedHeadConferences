@@ -1,7 +1,7 @@
 import conferenceData from './app/data/conference-data.json';
 
 export default defineNuxtConfig({
-  modules: ['@nuxt/fonts'],
+  modules: ['@nuxt/fonts', '@nuxt/icon/module'],
 
   css: [
     '~/assets/css/design-tokens.css',

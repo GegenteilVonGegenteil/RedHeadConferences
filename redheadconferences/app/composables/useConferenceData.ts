@@ -52,6 +52,15 @@ export function useConferenceData() {
         );
     }
 
+    function getSpeakersByIds(speakerIds: string[]) {
+        const speakers = [];
+        for (const speakerId of speakerIds) {
+            speakers.push(getSpeakerById(speakerId));
+        }
+
+        return speakers;
+    }
+
     return {
         getConference,
         getAllSessions,
@@ -61,6 +70,7 @@ export function useConferenceData() {
         getSpeakerById,
         getTrackById,
         getRoomById,
-        getSessionsBySpeakerId
+        getSessionsBySpeakerId,
+        getSpeakersByIds
     };
 }
