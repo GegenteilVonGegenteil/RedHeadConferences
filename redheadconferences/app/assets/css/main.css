@@ -75,8 +75,7 @@ button:focus-visible {
 
 .site-header {
     background-color: var(--color-surface);
-    padding: var(--spacing-content-gap)
-    var(--spacing-page-inline);
+    padding: var(--spacing-content-gap);
     margin-inline: auto;
     display: flex;
     flex-wrap: wrap;
