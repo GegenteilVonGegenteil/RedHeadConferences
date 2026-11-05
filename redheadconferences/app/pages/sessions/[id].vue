@@ -21,7 +21,7 @@
   if (!session) {
     throw createError({
       statusCode: 404,
-      statusMessage: 'Speaker nicht gefunden'
+      statusMessage: 'Session nicht gefunden'
     });
   }
 

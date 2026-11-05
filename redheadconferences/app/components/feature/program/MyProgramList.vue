@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DaySeperator from "~/components/feature/program/DaySeperator.vue";
+import DaySeparator from "~/components/feature/program/DaySeparator.vue";
 import SessionCard from "~/components/feature/sessions/SessionCard.vue";
 
 const props = defineProps<{ savedSessions: Session[] }>();
@@ -23,7 +23,7 @@ const sessionsByDay = computed(() => {
 
 <template>
   <div v-for="group in sessionsByDay" :key="group.day">
-    <DaySeperator :day="group.day" />
+    <DaySeparator :day="group.day" />
     <ul class="program-list">
       <li v-for="session in group.sessions" :key="session.id">
         <SessionCard :session="session" />

@@ -1,5 +1,5 @@
 <script setup lang="ts">
- defineProps(['tag'])
+ defineProps<{tag: Session['trackId'] | Session['level'] | Session['format']}>()
 </script>
 
 <template>

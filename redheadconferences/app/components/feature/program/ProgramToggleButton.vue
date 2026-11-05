@@ -2,7 +2,7 @@
   const props = defineProps<{ sessionId: string }>()
   const { inProgram, toggle, isHydrated } = useMyProgram()
 
-  const saved = computed(() =>isHydrated && inProgram(props.sessionId))
+  const saved = computed(() =>isHydrated.value && inProgram(props.sessionId))
 </script>
 
 <template>

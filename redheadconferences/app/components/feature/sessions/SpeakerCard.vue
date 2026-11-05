@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  defineProps(["speaker"] )
+  defineProps<{speaker: Speaker}>()
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 import conferenceDataJSON from '../data/conference-data.json' with { type: "json" };
 
 export type ConferenceSession = Session;
-    
+
 export function useConferenceData() {
     const conferenceData = conferenceDataJSON as ConferenceData;
 
@@ -51,10 +51,13 @@ export function useConferenceData() {
         );
     }
 
-    function getSpeakersByIds(speakerIds: string[]): (Speaker | undefined)[]  {
-        const speakers = [];
+    function getSpeakersByIds(speakerIds: string[]): Speaker[] {
+        const speakers: Speaker[] = [];
         for (const speakerId of speakerIds) {
-            speakers.push(getSpeakerById(speakerId));
+            const speaker = getSpeakerById(speakerId);
+            if (speaker) {
+                speakers.push(speaker);
+            }
         }
 
         return speakers;

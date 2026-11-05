@@ -1,12 +1,12 @@
 <script setup lang="ts">
- import Seperator from "~/components/base/Seperator.vue";
+ import Separator from "~/components/base/Separator.vue";
 
  const props = defineProps<{ day: string }>()
 </script>
 
 <template>
   <h2>{{day}}</h2>
-  <Seperator />
+  <Separator />
 </template>
 
 <style scoped>
