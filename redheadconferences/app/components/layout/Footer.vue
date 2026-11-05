@@ -11,8 +11,8 @@
     <Seperator/>
     <div class="place-and-time">
       <p v-for="(date, index) in conference.dates">
-        {{date}}
-        <span v-if="index < conference.dates.length - 1">/ </span>
+        {{formatDate(date)}}
+        <span v-if="index < conference.dates.length - 1"> / </span>
       </p>
       <p>/ {{conference.location}}</p>
     </div>

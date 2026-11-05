@@ -56,7 +56,7 @@ useHead({
                         <h3>{{ session.title }}</h3>
 
                         <p>
-                            {{ session.day }},
+                            {{ formatDate(session.day) }},
                             {{ session.startTime }} bis
                             {{ session.endTime }}
                         </p>
