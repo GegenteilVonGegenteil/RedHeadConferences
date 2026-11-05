@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import ThemeToggle from "~/components/base/ThemeToggle.vue";
 </script>
 <template>
   <header class="site-header">
@@ -12,9 +13,6 @@
       <NuxtLink class="navlinks" to="/sessions">Sessions</NuxtLink>
       <NuxtLink class="navlinks" to="/mein-programm">Mein Programm</NuxtLink>
     </nav>
-    <select name="theme" id="themes">
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-    </select>
+    <ThemeToggle/>
   </header>
 </template>
