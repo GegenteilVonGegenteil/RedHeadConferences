@@ -6,9 +6,14 @@
 **Datum** 04.11.2026
 **Tool** Claude
 **Prompt** "when using plain css, what is the best way to change the color of the currently selected route in a header element"
-**Zweck** Schauen ob es eine bessere LÖsung gibt als mit einem Terniary operator den namen mit der Route zu matchen um so conditionally zu stylen
+**Zweck** Schauen ob es eine bessere Lösung gibt als mit einem Terniary operator den namen mit der Route zu matchen um so conditionally zu stylen
 
 **Datum** 05.11.2026
 **Tool** Claude
 **Prompt** "My Dates are stored as strings in the ISO format. Whats the best way to reformat to a long date format and should this be done in a composable?"
 **Zweck** Schauen was Best Practice ist, sowohl für die Location der Funktionalität und Formatierungen
+
+**Datum** 05.11.2026
+**Tool** Copilot in VS Code
+**Prompt** "Please go through all relevant files and check if they use best practice and are consistent. Do not change anything"
+**Zweck** Qualitätssicherung und Checken wegen Blind Spots
