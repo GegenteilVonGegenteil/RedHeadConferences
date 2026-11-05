@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import Tag from "~/components/feature/sessions/Tag.vue";
   import SpeakerCard from "~/components/feature/sessions/SpeakerCard.vue";
+  import ProgramToggleButton from "~/components/feature/program/ProgramToggleButton.vue";
 
   definePageMeta({
     key: route => route.path
@@ -51,10 +52,10 @@
         <div class="locationAndTime">
           <p>{{session.day}}</p>
           <p>{{session.startTime}} - {{session.endTime}}</p>
-          <p>{{room.name}}</p>
+          <p>{{room?.name}}</p>
 
           <ClientOnly>
-            <button> Zum Programm hinzufügen </button>
+            <ProgramToggleButton :session-id="session.id"/>
           </ClientOnly>
         </div>
       </div>

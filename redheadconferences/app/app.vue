@@ -9,7 +9,7 @@ useHead({
 </script>
 
 <template>
-  <div class="site-shell">
+  <div>
     <NuxtLayout>
       <main class="page-content">
         <NuxtPage />

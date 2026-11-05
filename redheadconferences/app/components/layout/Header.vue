@@ -10,7 +10,7 @@
     <nav class="site-nav">
       <NuxtLink class="navlinks" to="/">Home</NuxtLink>
       <NuxtLink class="navlinks" to="/sessions">Sessions</NuxtLink>
-      <NuxtLink class="navlinks" to="/myprogram">Mein Programm</NuxtLink>
+      <NuxtLink class="navlinks" to="/mein-programm">Mein Programm</NuxtLink>
     </nav>
     <select name="theme" id="themes">
       <option value="light">Light</option>

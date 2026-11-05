@@ -4,7 +4,7 @@
 </script>
 
 <template>
-  <div>
+  <div class="site-shell">
     <Header />
     <slot />
     <Footer />
