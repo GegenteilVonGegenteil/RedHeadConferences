@@ -91,7 +91,10 @@ button:focus-visible {
 .branding {
     display: flex;
     align-items: center;
-    gap: var(--spacing-control-block)
+    gap: var(--spacing-control-block);
+    color: var(--color-text-primary);
+    font-style: normal;
+    text-decoration: none;
 }
 
 #name {
@@ -143,6 +146,7 @@ button:focus-visible {
 }
 
 .seperator {
+    display: block;
     border-top: 0.15rem solid var(--color-text-primary);
     border-radius: 5px;
     width: 100%;
@@ -155,11 +159,28 @@ button:focus-visible {
 
 /* Anordnung Startseite */
 .home {
-    display: grid;
+    display: flex;
     gap: var(--spacing-section);
 }
 
-.hero,
+.hero {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-content-gap);
+}
+
+.hero .button {
+    width: 50%;
+}
+
+.hero-image {
+    position: relative;
+    top: calc(var(--spacing-section) * -1);
+    height: 25%;
+    width: 25%;
+}
+
 .program-section,
 .placeholder-card {
     display: grid;
@@ -229,10 +250,16 @@ button:focus-visible {
 }
 
 .session-card {
-  display: grid;
-  gap: var(--spacing-content-gap);
-  padding: var(--spacing-card-padding);
-  background-color: var(--color-surface);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--spacing-content-gap);
+    padding: var(--spacing-card-padding);
+    background-color: var(--color-surface);
+}
+
+.session-card button {
+    height: 50%;
 }
 
 select,
@@ -270,6 +297,51 @@ select:focus-visible {
     gap: var(--spacing-content-gap);
 }
 
+/* Session Details */
+.session-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-content-gap);
+}
+
+.tags {
+    display: flex;
+    gap: var(--spacing-content-gap);
+}
+
+.tag {
+    padding: var(--spacing-control-block);
+    border-radius: var(--border-radius-control);
+    background-color: var(--color-surface);
+}
+
+.session-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: var(--spacing-content-gap);
+}
+
+.session-details-box, .location-and-time, .speakers-box, .speaker-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-content-gap);
+}
+
+.speakers-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-content-gap);
+    margin: 0;
+    padding: 0;
+}
+
+.location-and-time, .speaker-card {
+    background-color: var(--color-surface);
+    padding: var(--spacing-content-gap);
+    width: 100%;
+}
+
 /* Programm Styling */
 .program-list {
     display: flex;
@@ -279,4 +351,16 @@ select:focus-visible {
 
 .button-saved {
     background-color: var(--color-action-hover);
+}
+
+@media screen and (max-width: 768px) {
+    .session-details {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-image {
+        display: none;
+    }
 }

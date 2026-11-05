@@ -3,11 +3,11 @@
 </script>
 
 <template>
-  <div class="speakerCard">
+  <li class="speaker-card" :key="speaker.id">
     <p>{{speaker.name}}</p>
     <p>{{speaker.title}}  · {{speaker.company}}</p>
     <NuxtLink class="button" :to="`/speakers/${speaker.id}`">{{ speaker.name }} kennenlernen</NuxtLink>
-  </div>
+  </li>
 </template>
 
 <style scoped>

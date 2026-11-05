@@ -110,7 +110,7 @@ const {
                     <h2>{{ session.title }}</h2>
 
                     <p>
-                        {{ session.day }},
+                        {{ formatDate(session.day) }},
                         {{ session.startTime }} bis
                         {{ session.endTime }}
                     </p>

@@ -34,38 +34,41 @@
 </script>
 
 <template>
-  <NuxtLink to="/sessions" class="back">Zurück zu Sessions</NuxtLink>
-  <section class="tags">
-    <Tag :tag="session.trackId" />
-    <Tag :tag="session.level" />
-    <Tag :tag="session.format" />
-  </section>
+  <div class="session-page">
+    <NuxtLink to="/sessions" class="back">Zurück zu Sessions</NuxtLink>
+    <section class="tags">
+      <Tag :tag="session.trackId" />
+      <Tag :tag="session.level" />
+      <Tag :tag="session.format" />
+    </section>
 
-  <section class="mainSessionContent">
-    <h1>{{session.title}}</h1>
-    <p>{{session.abstract}}</p>
-  </section>
+    <section class="main-session-content">
+      <h1>{{session.title}}</h1>
+      <p>{{session.abstract}}</p>
+    </section>
 
-  <section class="sessionDetails">
-      <div class="sessionDetailsBox">
-        <h2>Wann und Wo?</h2>
-        <div class="locationAndTime">
-          <p>{{session.day}}</p>
-          <p>{{session.startTime}} - {{session.endTime}}</p>
-          <p>{{room?.name}}</p>
+    <section class="session-details">
+        <div class="session-details-box">
+          <h2>Wann und Wo?</h2>
+          <div class="location-and-time">
+            <p>{{formatDate(session.day)}}</p>
+            <p>{{session.startTime}} - {{session.endTime}}</p>
+            <p>{{room?.name}}</p>
 
-          <ClientOnly>
-            <ProgramToggleButton :session-id="session.id"/>
-          </ClientOnly>
+            <ClientOnly>
+              <ProgramToggleButton :session-id="session.id"/>
+            </ClientOnly>
+          </div>
         </div>
+
+      <div class="speakers-box">
+        <h2>Mit wem?</h2>
+        <ul class="speakers-list">
+          <SpeakerCard v-for="speaker in speakers" :key="speaker?.id" :speaker="speaker" />
+        </ul>
       </div>
-
-    <div class="speakersBox">
-      <h2>Mit wem?</h2>
-      <SpeakerCard v-for="speaker in speakers" :key="speaker?.id" :speaker="speaker" />
-    </div>
-  </section>
-
+    </section>
+  </div>
 </template>
 
 <style scoped>

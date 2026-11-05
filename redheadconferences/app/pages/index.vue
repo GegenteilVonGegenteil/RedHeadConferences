@@ -1,21 +1,31 @@
+<script setup lang="ts">
+const {getConference}= useConferenceData();
+const conference = getConference();
+
+</script>
+
 <template>
     <div class="home">
         <section class="hero">
             <p class="eyebrow">
-                FrontendNow · Deine Konferenz für neue Ideen
+                {{conference.tagline}}
             </p>
 
-            <h1>Deine nächste Idee beginnt hier.</h1>
+            <h1>{{conference.name}}</h1>
 
             <p class="intro">
-                Willkommen bei Redhead Conferences.
-                Entdecke das Programm von FrontendNow
-                und finde Inspiration für deine nächsten Projekte.
+              <span v-for="(day, index) in conference.dates" class="intro-text">
+                <time>{{formatDate(day)}}</time>
+                <span v-if="index < conference.dates.length -1"> / </span>
+                <span v-else>, </span>
+              </span>
+              <span>{{conference.location}}</span>
             </p>
 
             <NuxtLink to="/sessions" class="button">
                 Zum Programm
             </NuxtLink>
         </section>
+        <img class="hero-image" alt="" src="@/assets/images/HeroImageLight.svg">
     </div>
 </template>
