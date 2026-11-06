@@ -62,3 +62,8 @@
 **Tool** ChatGPT/Codex
 **Prompt** "Habe ich nach Punkt 14 "Dokumentation und Cross-Review bleiben erforderlich" überhaupt noch etwas zutun, wenn ich die 01-rendering-strategie-adr.md und meinen AI-LOG geschrieben habe?"
 **Zweck** Überprüfen, ob noch Aufgaben für Person 1 offen sind und welche als Team überprüft und gemeinsam umgesetzt werden müssen.
+
+**Datum** 06.11.2026
+**Tool** ChatGPT/Codex
+**Prompt** "Hallo, ich habe SessionCard.vue und SessionFilters.vue angelegt, aber noch nicht befüllt. Bitte helfe mir dabei die richtigen Codebausteine zu transferieren und halte dich genau an die Angaben."
+**Zweck** Extra Sicherheit, da ich auf main gearbeitet habe und nicht in meinem vorherign branch isabel/schritt2. Die Erklärungen haben beim Verständnis geholfen warum genau diese Codeteile aus index.vue in SessionCard.vue bzw. SessionFilters.vue verschoben gehören.
