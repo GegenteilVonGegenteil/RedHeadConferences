@@ -1,9 +1,9 @@
 # RedHeadConference
-Konferenz-Plattform für NextGen-Frontends. Aktuell ein Proof of Concept das die Design Tokens einbindet und die Anzahl an Sessions zeigt.
+Konferenz-Plattform für NextGen-Frontends. Umfasst eine Landingpage, Session-Übersicht, Session-Details, Speaker-Details und einem perönlichen Programm.
 
 ## Setup
 Zuerst sichergehen, dass man im richtigen Folder ist (redheadconferences).
-Sonnst via `cd redheadconferences` hin navigieren.
+Sonst via `cd redheadconferences` dorthin navigieren.
 
 
 Dependencies installieren je nach Package-Manager:
@@ -41,7 +41,7 @@ bun run dev
 
 ## Production
 
-Productions-Sever builden via:
+Production-Server builden via:
 
 ```bash
 # npm
@@ -57,7 +57,7 @@ yarn build
 bun run build
 ```
 
-Lokale Production Preview via:
+Local Production Preview via:
 
 ```bash
 # npm
