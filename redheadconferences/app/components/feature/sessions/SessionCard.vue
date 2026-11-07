@@ -16,6 +16,8 @@
         {{ session.endTime }}
       </p>
 
+      <p> {{session.level}} </p>
+
       <NuxtLink :to="`/sessions/${session.id}`">
         Zur Session
       </NuxtLink>
