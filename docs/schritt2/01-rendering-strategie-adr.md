@@ -1,7 +1,7 @@
 # Renderingstrategie für Redhead Conferences
 
 ## Status
-Reviewed
+Approved
 
 ## Allgemeine Auswahlkriterien
 
