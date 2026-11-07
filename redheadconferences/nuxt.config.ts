@@ -15,6 +15,11 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
+    // Startseite benutzt SSG
+    '/': {
+      prerender: true,
+    },
+
     // Speaker-Profile werden beim Build erzeugt.
     '/speakers/**': {
       prerender: true,
