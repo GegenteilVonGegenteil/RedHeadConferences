@@ -4,6 +4,27 @@
     box-sizing: border-box;
 }
 
+:root {
+    .hero-image--dark {
+        display: none;
+    }
+}
+
+:root[data-theme="dark"] {
+
+    .hero-image--light {
+        display: none;
+    }
+
+    .hero-image--dark {
+        display: block;
+        position: relative;
+        top: calc(var(--spacing-section) * -1);
+        height: 25%;
+        width: 25%;
+    }
+}
+
 /* Grundgestaltung Website */
 body {
     margin: 0;
@@ -174,7 +195,7 @@ button:focus-visible {
     width: 50%;
 }
 
-.hero-image {
+.hero-image--light {
     position: relative;
     top: calc(var(--spacing-section) * -1);
     height: 25%;

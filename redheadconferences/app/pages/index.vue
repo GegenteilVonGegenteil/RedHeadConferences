@@ -26,6 +26,7 @@ const conference = getConference();
                 Zum Programm
             </NuxtLink>
         </section>
-        <img class="hero-image" alt="" src="@/assets/images/HeroImageLight.svg">
+        <img class="hero-image--light" alt="" src="@/assets/images/HeroImageLight.svg">
+        <img class="hero-image--dark" alt="" src="@/assets/images/HeroImageDark.svg">
     </div>
 </template>
