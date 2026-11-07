@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import {useConferenceData} from "~/composables/useConferenceData.ts";
   import SessionFilters from '~/components/feature/sessions/SessionFilters.vue';
+  import SessionCard from "~/components/feature/sessions/SessionCard.vue";
 
 const {
     getAllSessions,
@@ -50,21 +51,7 @@ const {
                 v-for="session in filteredSessions"
                 :key="session.id"
             >
-                <article class="session-card">
-                    <h2>{{ session.title }}</h2>
-
-                    <p>
-                        {{ formatDate(session.day) }},
-                        {{ session.startTime }} bis
-                        {{ session.endTime }}
-                    </p>
-
-                    <p>{{ session.level }}</p>
-
-                    <NuxtLink :to="`/sessions/${session.id}`">
-                        Details ansehen
-                    </NuxtLink>
-                </article>
+                <SessionCard :session="session" :minimal="false"/>
             </li>
         </ul>
     </div>

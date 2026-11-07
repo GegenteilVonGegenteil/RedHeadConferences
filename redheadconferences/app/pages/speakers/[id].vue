@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import SessionCard from "~/components/feature/sessions/SessionCard.vue";
+
 definePageMeta({
     key: route => route.path
 });
@@ -52,19 +54,7 @@ useHead({
                     v-for="session in speakerSessions"
                     :key="session.id"
                 >
-                    <article class="session-card">
-                        <h3>{{ session.title }}</h3>
-
-                        <p>
-                            {{ formatDate(session.day) }},
-                            {{ session.startTime }} bis
-                            {{ session.endTime }}
-                        </p>
-
-                        <NuxtLink :to="`/sessions/${session.id}`">
-                            Zur Session
-                        </NuxtLink>
-                    </article>
+                   <SessionCard :session="session" :minimal="true"/>
                 </li>
             </ul>
         </section>

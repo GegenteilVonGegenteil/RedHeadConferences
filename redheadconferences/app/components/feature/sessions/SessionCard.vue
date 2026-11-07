@@ -1,8 +1,7 @@
 <script setup lang="ts">
   import type { Session } from '~/types/conference';
   import ProgramToggleButton from "~/components/feature/program/ProgramToggleButton.vue";
-
-  defineProps<{session: Session}>()
+  defineProps<{session: Session, minimal: boolean}>()
 </script>
 
 <template>
@@ -10,7 +9,7 @@
     <div>
       <h3>{{ session.title }}</h3>
 
-      <p>
+      <p v-if="!minimal">
         {{ session.day }},
         {{ session.startTime }} bis
         {{ session.endTime }}

@@ -26,7 +26,7 @@ const sessionsByDay = computed(() => {
     <DaySeparator :day="group.day" />
     <ul class="program-list">
       <li v-for="session in group.sessions" :key="session.id">
-        <SessionCard :session="session" />
+        <SessionCard :session="session" :minimal="false"/>
       </li>
     </ul>
   </div>
