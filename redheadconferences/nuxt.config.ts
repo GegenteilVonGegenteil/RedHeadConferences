@@ -1,7 +1,7 @@
 import conferenceData from './app/data/conference-data.json';
 
 export default defineNuxtConfig({
-  modules: ['@nuxt/fonts'],
+  modules: ['@nuxt/fonts', '@vite-pwa/nuxt', '@vite-pwa/nuxt'],
 
   css: [
     '~/assets/css/design-tokens.css',
@@ -46,5 +46,31 @@ export default defineNuxtConfig({
         speaker => `/speakers/${speaker.id}`
       ),
     },
+  },
+  pwa: {
+    registerType: 'autoUpdate',
+
+    manifest: {
+      id: '/',
+      name: 'Redhead Conferences',
+      short_name: 'Redhead Conferences',
+      description: 'Redhead Conferences ist die Konferenzplattform für Frontend-Entwickler:innen am Beginn ihrer Karriere.',
+      start_url: '/',
+      display: 'standalone',
+      background_color: '#F5F5F5',
+      theme_color: '#000F2B',
+      icons: [
+        {
+          src: '/pwa-192x192.png',
+          sizes: '192x192',
+          type: 'image/png',
+        },
+        {
+          src: '/pwa-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+        }
+      ]
+    }
   },
 });
