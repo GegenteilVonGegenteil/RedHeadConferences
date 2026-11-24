@@ -1,60 +1,86 @@
+
 import conferenceDataJSON from '../data/conference-data.json' with { type: "json" };
 
 export type ConferenceSession = Session;
 
 export function useConferenceData() {
-    const conferenceData = conferenceDataJSON as ConferenceData;
+    const conferenceData = useState<ConferenceData>(
+        'conference-data',
+        () => conferenceDataJSON as ConferenceData
+    );
+
+    const lastUpdated = useState<string | null>(
+        'conference-last-updated',
+        () => null
+    );
+
+    async function refreshConferenceData() {
+        try {
+            const data = await $fetch<ConferenceData>(
+                '/api/conference'
+            );
+
+            conferenceData.value = data;
+        } catch (error) {
+            console.warn(
+                'Konferenzdaten konnten nicht aktualisiert werden.',
+                error
+            );
+        }
+    }
 
     function getConference(): Conference {
-        return conferenceData.conference;
+        return conferenceData.value.conference;
     }
 
     function getAllSessions(): Session[] {
-        return conferenceData.sessions;
+        return conferenceData.value.sessions;
     }
 
     function getAllSpeakers(): Speaker[] {
-        return conferenceData.speakers;
+        return conferenceData.value.speakers;
     }
 
     function getAllTracks(): Track[] {
-        return conferenceData.tracks;
+        return conferenceData.value.tracks;
     }
 
     function getSessionById(id: string): Session | undefined {
-        return conferenceData.sessions.find(
+        return conferenceData.value.sessions.find(
             session => session.id === id
         );
     }
 
     function getSpeakerById(id: string): Speaker | undefined {
-        return conferenceData.speakers.find(
+        return conferenceData.value.speakers.find(
             speaker => speaker.id === id
         );
     }
 
     function getTrackById(id: string): Track | undefined {
-        return conferenceData.tracks.find(
+        return conferenceData.value.tracks.find(
             track => track.id === id
         );
     }
 
     function getRoomById(id: string): Room | undefined {
-        return conferenceData.rooms.find(
+        return conferenceData.value.rooms.find(
             room => room.id === id
         );
     }
 
     function getSessionsBySpeakerId(speakerId: string): Session[] {
-        return conferenceData.sessions.filter(
+        return conferenceData.value.sessions.filter(
             session => session.speakerIds.includes(speakerId)
         );
     }
 
     function getSpeakersByIds(speakerIds: string[]): Speaker[] {
         const speakers: Speaker[] = [];
+
         for (const speakerId of speakerIds) {
             const speaker = getSpeakerById(speakerId);
+
             if (speaker) {
                 speakers.push(speaker);
             }
@@ -73,6 +99,8 @@ export function useConferenceData() {
         getTrackById,
         getRoomById,
         getSessionsBySpeakerId,
-        getSpeakersByIds
+        getSpeakersByIds,
+        refreshConferenceData,
+        lastUpdated
     };
 }
