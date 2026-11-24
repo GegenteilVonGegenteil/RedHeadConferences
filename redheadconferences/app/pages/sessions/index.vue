@@ -9,9 +9,9 @@ const {
     getConference
 } = useConferenceData();
 
-const sessions = getAllSessions();
-const tracks = getAllTracks();
-const conference = getConference();
+const sessions = computed(() => getAllSessions());
+const tracks = computed(() => getAllTracks());
+const conference = computed(() => getConference());
 
 const {
     selectedTrack,

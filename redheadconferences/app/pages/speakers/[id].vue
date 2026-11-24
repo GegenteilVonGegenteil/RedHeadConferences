@@ -14,24 +14,26 @@ const {
 
 const speakerId = String(route.params.id);
 
-const speaker = getSpeakerById(speakerId);
+const speaker = computed(() => getSpeakerById(speakerId));
 
-if (!speaker) {
+if (!speaker.value) {
     throw createError({
         statusCode: 404,
         statusMessage: 'Speaker nicht gefunden'
     });
 }
 
-const speakerSessions = getSessionsBySpeakerId(speakerId);
+const speakerSessions = computed(() =>
+    getSessionsBySpeakerId(speakerId)
+);
 
-useHead({
-    title: `${speaker.name} | Redhead Conferences`
-});
+useHead(() => ({
+    title: `${speaker.value?.name ?? 'Speaker'} | Redhead Conferences`
+}));
 </script>
 
 <template>
-    <div class="speaker-profile">
+    <div class="speaker-profile" v-if="speaker">
         <NuxtLink to="/sessions">
             Zurück zum Konferenzprogramm
         </NuxtLink>

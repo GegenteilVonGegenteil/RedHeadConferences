@@ -1,11 +1,15 @@
-import {useConferenceData} from "~/composables/useConferenceData.ts";
 
-const timeZone = useConferenceData().getConference().timezone;
+import conferenceData from '../data/conference-data.json';
+
+const timeZone = conferenceData.conference.timezone;
 
 export function formatDate(
     iso: string,
     locale = 'de-DE',
-    options: Intl.DateTimeFormatOptions = { dateStyle: 'long', timeZone: timeZone }
+    options: Intl.DateTimeFormatOptions = {
+        dateStyle: 'long',
+        timeZone: timeZone
+    }
 ) {
-    return new Date(iso).toLocaleDateString(locale, options)
+    return new Date(iso).toLocaleDateString(locale, options);
 }
