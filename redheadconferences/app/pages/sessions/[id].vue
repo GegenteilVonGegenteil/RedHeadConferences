@@ -1,3 +1,4 @@
+
 <script setup lang="ts">
   import Tag from "~/components/feature/sessions/Tag.vue";
   import SpeakerCard from "~/components/feature/sessions/SpeakerCard.vue";
@@ -16,25 +17,35 @@
   } = useConferenceData();
 
   const sessionId = String(route.params.id);
-  const session = getSessionById(sessionId);
 
-  if (!session) {
+  const session = computed(() => getSessionById(sessionId));
+
+  if (!session.value) {
     throw createError({
       statusCode: 404,
       statusMessage: 'Session nicht gefunden'
     });
   }
 
-  const speakers = getSpeakersByIds(session.speakerIds);
-  const room = getRoomById(session.roomId);
+  const speakers = computed(() =>
+    session.value
+      ? getSpeakersByIds(session.value.speakerIds)
+      : []
+  );
 
-  useHead({
-    title: `${session.title} | Redhead Conferences`
-  });
+  const room = computed(() =>
+    session.value
+      ? getRoomById(session.value.roomId)
+      : undefined
+  );
+
+  useHead(() => ({
+    title: `${session.value?.title ?? 'Session'} | Redhead Conferences`
+  }));
 </script>
 
 <template>
-  <div class="session-page">
+  <div class="session-page" v-if="session">
     <NuxtLink to="/sessions" class="back">Zurück zu Sessions</NuxtLink>
     <section class="tags">
       <Tag :tag="session.trackId" />
