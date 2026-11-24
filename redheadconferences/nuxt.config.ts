@@ -55,6 +55,22 @@ export default defineNuxtConfig({
   pwa: {
     registerType: 'autoUpdate',
 
+    workbox: {
+      runtimeCaching: [
+        {
+          // Session- und Speaker-Daten gemäß Offline-Konzept
+          urlPattern: /\/api\/conference$/,
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'redhead-conference-data',
+            cacheableResponse: {
+              statuses: [200]
+            }
+          }
+        }
+      ]
+    },
+    
     manifest: {
       id: '/',
       name: 'Redhead Conferences',
