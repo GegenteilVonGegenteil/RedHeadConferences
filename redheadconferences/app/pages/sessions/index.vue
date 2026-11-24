@@ -2,6 +2,7 @@
   import {useConferenceData} from "~/composables/useConferenceData.ts";
   import SessionFilters from '~/components/feature/sessions/SessionFilters.vue';
   import SessionCard from "~/components/feature/sessions/SessionCard.vue";
+  import DataUpdateStatus from '~/components/feature/offline/DataUpdateStatus.vue';
 
 const {
     getAllSessions,
@@ -26,6 +27,8 @@ const {
 <template>
     <div class="sessions-page">
         <h1>Programm der {{ conference.name }}</h1>
+        
+        <DataUpdateStatus />
 
         <SessionFilters
             v-model:track="selectedTrack"

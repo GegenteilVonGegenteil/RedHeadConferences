@@ -16,11 +16,14 @@ export function useConferenceData() {
 
     async function refreshConferenceData() {
         try {
-            const data = await $fetch<ConferenceData>(
-                '/api/conference'
-            );
+            const response = await $fetch<{
+                data: ConferenceData;
+                updatedAt: string;
+            }>('/api/conference');
 
-            conferenceData.value = data;
+            conferenceData.value = response.data;
+            lastUpdated.value = response.updatedAt;
+
         } catch (error) {
             console.warn(
                 'Konferenzdaten konnten nicht aktualisiert werden.',
