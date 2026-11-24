@@ -1,5 +1,5 @@
 Im PWA-Setup wurde vite-pwa/nuxt genutzt. Dies wurde gewählt, da es schnell die Applikation PWA-fähig macht und für unsere Zwecke keine größe Konfiguration der Service Worker nötig ist, bzw. eine eigenständige Implenetation keine signifikanten Vorteile hätte.
 
-Im config werden für das Manifest z.B. der Name, die Beschreibung und die Startroute "/" definiert. Für das Display haben wir uns für den "standalone"-Modus entschieden, da wir grunsätzlich den Eindruck einer Native-App erwecken wollen, ohne die UI des Geräts zu verstecken. Die Icons liegen in den für diese Funktionalität üblichen Größen 192x192px und 512x512px in einem eigenen Ordner ("/public/icons") und werden hier auch verlinkt.
+Im config werden für das Manifest z.B. der Name, die Beschreibung und die Startroute "/" definiert. Für das Display haben wir uns für den "standalone"-Modus entschieden, da wir grunsätzlich den Eindruck einer Native-App erwecken wollen, ohne die UI des Geräts zu verstecken. Die Icons liegen in den für diese Funktionalität üblichen Größen 192x192px und 512x512px in einem eigenen Ordner ("/icons") und werden hier auch verlinkt.
 
 Für die Farben werden die default Farben aus den Design Tokens genommen, also #F5F5F5 für den Hintergrund und #000F2B für den Vorgrund.
