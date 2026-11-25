@@ -5,7 +5,7 @@
 
 - Projekt: Redhead Conferences – FrontendNow
 - Datum: 25.11.2026
-- Status: For Review
+- Status: Approved
 - Verantwortlich: Projektteam
 
 ## 1. Kontext und Problemstellung
@@ -207,6 +207,6 @@ dokumentiert.
 | Technische Umsetzung der Daten-Caching-Strategie | Abgeschlossen |
 | Eigene manuelle Offline-Tests | Durchgeführt |
 | Dokumentation der Testergebnisse | Erstellt |
-| Unabhängige Tests durch das zweite Teammitglied | Noch zu bestätigen |
+| Unabhängige Tests durch das zweite Teammitglied | Durchgeführt |
 | Gegenseitiges Cross-Review | Offen |
 | Gemeinsame Freigabe des Entscheidungsprotokolls | Offen |
