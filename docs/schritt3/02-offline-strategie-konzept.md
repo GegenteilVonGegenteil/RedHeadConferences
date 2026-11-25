@@ -1,7 +1,7 @@
 # Offline-Strategie für Redhead Conferences
 
 ## Status
-For Review
+Approved
 
 ## Ausgangslage
 Unsere Webseite zeigt User:innen alle Sessions und Sprecher:innen als Überblick und im Detail an. Zudem können sie Sessions zu ihrem persönlichen Programm hinzufügen, was aktuell über LocalStorage funktioniert. Da während der Konferenz oft keine oder nur eine schwache Internetverbindung besteht, muss die Seite auch offline nutzbar sein.

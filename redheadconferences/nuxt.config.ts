@@ -2,6 +2,7 @@ import conferenceData from './app/data/conference-data.json';
 
 export default defineNuxtConfig({
   modules: ['@nuxt/fonts', '@vite-pwa/nuxt'],
+  modules: ['@nuxt/fonts', '@vite-pwa/nuxt'],
 
   css: [
     '~/assets/css/design-tokens.css',
@@ -53,6 +54,24 @@ export default defineNuxtConfig({
     },
   },
   pwa: {
+    registerType: 'autoUpdate',
+
+    workbox: {
+      runtimeCaching: [
+        {
+          // Session- und Speaker-Daten gemäß Offline-Konzept
+          urlPattern: /\/api\/conference$/,
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'redhead-conference-data',
+            cacheableResponse: {
+              statuses: [200]
+            }
+          }
+        }
+      ]
+    },
+    
     registerType: 'prompt',
 
     strategies: 'generateSW',
@@ -77,11 +96,13 @@ export default defineNuxtConfig({
       theme_color: '#000F2B',
       icons: [
         {
+          src: '/icons/icon-192.png',
           src: 'icons/icon-192.png',
           sizes: '192x192',
           type: 'image/png',
         },
         {
+          src: '/icons/icon-512.png',
           src: 'icons/icon-512.png',
           sizes: '512x512',
           type: 'image/png',

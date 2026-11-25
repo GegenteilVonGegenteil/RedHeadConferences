@@ -1,22 +1,24 @@
-import { computed, ref } from 'vue';
+
+import { computed, ref, toValue } from 'vue';
+import type { MaybeRefOrGetter } from 'vue';
 import type { ConferenceSession } from './useConferenceData';
 
 export function useSessionFilters(
-    sessions: readonly ConferenceSession[]
+    sessions: MaybeRefOrGetter<readonly ConferenceSession[]>
 ) {
     // Ein leerer Wert bedeutet, dass dieser Filter nicht einschränkt.
     const selectedTrack = ref('');
     const selectedDay = ref('');
     const selectedLevel = ref('');
 
-    // Die verfügbaren Level werden aus den Sessiondaten abgeleitet.
-    const levels = [
-        ...new Set(sessions.map(session => session.level))
-    ];
+    // Die verfügbaren Level werden reaktiv abgeleitet.
+    const levels = computed(() => [
+        ...new Set(toValue(sessions).map(session => session.level))
+    ]);
 
-    // Die Ergebnisliste wird bei einer Filteränderung neu berechnet.
+    // Die Ergebnisliste reagiert auf Filter- und Datenänderungen.
     const filteredSessions = computed(() => {
-        return sessions.filter(session => {
+        return toValue(sessions).filter(session => {
             const matchesTrack =
                 selectedTrack.value === '' ||
                 session.trackId === selectedTrack.value;
