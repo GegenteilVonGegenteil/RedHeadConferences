@@ -2,7 +2,6 @@ import conferenceData from './app/data/conference-data.json';
 
 export default defineNuxtConfig({
   modules: ['@nuxt/fonts', '@vite-pwa/nuxt'],
-  modules: ['@nuxt/fonts', '@vite-pwa/nuxt'],
 
   css: [
     '~/assets/css/design-tokens.css',
@@ -57,6 +56,13 @@ export default defineNuxtConfig({
     registerType: 'autoUpdate',
 
     workbox: {
+      globPatterns: ['**/*.{html,js,css,png,svg,ico,webmanifest,woff2}'
+      ],
+      navigateFallback: '/',
+      navigateFallbackAllowlist: [
+        /^\/$/,
+        /^\/mein-programm\/?$/,
+      ],
       runtimeCaching: [
         {
           // Session- und Speaker-Daten gemäß Offline-Konzept
@@ -71,20 +77,8 @@ export default defineNuxtConfig({
         }
       ]
     },
-    
-    registerType: 'prompt',
 
     strategies: 'generateSW',
-    workbox: {
-      globPatterns: ['**/*.{html,js,css,png,svg,ico,webmanifest,woff2}'
-      ],
-      navigateFallback: '/',
-      navigateFallbackAllowlist: [
-        /^\/$/,
-        /^\/mein-programm\/?$/,
-      ],
-    },
-
     manifest: {
       id: '/',
       name: 'Redhead Conferences',
@@ -97,13 +91,11 @@ export default defineNuxtConfig({
       icons: [
         {
           src: '/icons/icon-192.png',
-          src: 'icons/icon-192.png',
           sizes: '192x192',
           type: 'image/png',
         },
         {
           src: '/icons/icon-512.png',
-          src: 'icons/icon-512.png',
           sizes: '512x512',
           type: 'image/png',
         }
